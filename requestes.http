@@ -1,0 +1,35 @@
+### GET Listagem medicos
+GET http://localhost:8080/medicos
+Accept: application/json
+
+### PUT atualizar medico
+PUT  http://localhost:8080/medicos
+Content-Type: application/json
+
+{
+	"id":4,
+	"nome": "Avani da Silva",
+	"telefone": "121212"
+
+}
+
+### POST cadastrar medico
+POST http://localhost:8080/medicos
+Content-Type: application/json
+
+{
+    "nome": "Luiz de França",
+    "email": "Luiz.franca@voll.med",
+    "telefone": "112233",
+    "crm": "101010",
+    "especialidade": "CARDIOLOGIA",
+    "endereco": {
+        "logradouro": "av. Bernardo Viera de mello",
+        "bairro": "candeis",
+        "cep": "12345678",
+        "numero": "1",
+        "complemento": "casa",
+        "cidade": "Recife",
+        "uf": "PE"
+    }
+}
