@@ -23,10 +23,37 @@ public class Endereco {
         this.logradouro = endereco.logradouro();
         this.numero = endereco.numero();
         this.bairro = endereco.bairro();
-        this.cep = endereco.cep();
         this.cidade = endereco.cidade();
         this.uf = endereco.uf();
+        this.cep = endereco.cep();
         this.complemento = endereco.complemento();
 
+    }
+
+    public void atualizarInformacoes(DadosEndereco dados) {
+
+
+        if (dados.logradouro() != null) {
+
+            this.logradouro = dados.logradouro();
+        }
+        if (dados.numero() != null) {
+            this.numero = dados.numero();
+        }
+        if (dados.bairro() != null) {
+            this.bairro = dados.bairro();
+        }
+        if (dados.cidade() != null) {
+            this.cidade = dados.cidade();
+        }
+        if (dados.uf() != null) {
+            this.uf = dados.uf();
+        }
+        if (dados.cep() != null) {
+            this.cep = dados.cep();
+        }
+        if (dados.complemento() != null) {
+            this.complemento = dados.complemento();
+        }
     }
 }
