@@ -2,6 +2,11 @@
 GET http://localhost:8080/medicos
 Accept: application/json
 
+### GET Listagem medicos
+GET http://localhost:8080/medicos/3
+Accept: application/json
+
+
 ### PUT atualizar medico
 PUT  http://localhost:8080/medicos
 Content-Type: application/json

@@ -32,7 +32,6 @@ public class Endereco {
 
     public void atualizarInformacoes(DadosEndereco dados) {
 
-
         if (dados.logradouro() != null) {
 
             this.logradouro = dados.logradouro();

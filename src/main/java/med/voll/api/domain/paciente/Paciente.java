@@ -37,6 +37,7 @@ public class Paciente {
         this.ativo = true;
     }
 
+
     public void excluir(Long id) {
         this.ativo =false;
     }
