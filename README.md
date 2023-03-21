@@ -29,3 +29,10 @@ Lombok é Framework, para gerar códigos, como esses códigos verbosos do Java, 
 -   Boas práticas REST
 -   Tratamento de erros
 -   Controle de acesso com JWT
+
+
+##  princípios do SOLID no projeto:
+
+-   **Single Responsibility Principle**  (Princípio da responsabilidade única): porque cada classe de validação tem apenas uma responsabilidade.
+-   **Open-Closed Principle**  (Princípio aberto-fechado): na classe  _service_,  `AgendadeConsultas`, porque ela está fechada para modificação, não precisamos mexer nela. Mas ela está aberta para extensão, conseguimos adicionar novos validadores apenas criando as classes implementando a interface.
+-   **Dependency Inversion Principle**  (Princípio da inversão de dependência): porque nossa classe  _service_  depende de uma abstração, que é a interface, não depende dos validadores, das implementações especificamente. O módulo de alto nível, a  _service_, não depende dos módulos de baixo nível, que são os validadores.
