@@ -14,6 +14,7 @@ O projeto é um App para uma clinica medica, sistema realiza CRUD de medicos, pa
 - Spring Security
 - Lombok
 - Validation
+-  SpringDoc
 
 E outras bibliotecas, como o driver do  _MySQL, Flyway e token [java-jwt](https://github.com/auth0/java-jwt) .
 
@@ -23,16 +24,21 @@ Lombok é Framework, para gerar códigos, como esses códigos verbosos do Java, 
 
 ### Tudo que Ja foi implementado
 -   Desenvolvimento de uma API Rest
--   CRUD (Create, Read, Update e Delete)
--   Validações
--   Paginação e ordenação
--   Boas práticas REST
--   Tratamento de erros
--   Controle de acesso com JWT
+-   ﻿﻿CRUD (Create, Read, Update e Delete)
+-   ﻿﻿Validações
+-   ﻿﻿Paginação e ordenação
+-   ﻿﻿Boas práticas REST
+-   ﻿﻿Tratamento de erros
+-   ﻿﻿Controle de acesso com JWT
+- Documentação Swagger UI para visualizar e testar uma API Rest
 
 
-##  princípios do SOLID no projeto:
+## Princípios SOLID em destaque no projeto
 
 -   **Single Responsibility Principle**  (Princípio da responsabilidade única): porque cada classe de validação tem apenas uma responsabilidade.
 -   **Open-Closed Principle**  (Princípio aberto-fechado): na classe  _service_,  `AgendadeConsultas`, porque ela está fechada para modificação, não precisamos mexer nela. Mas ela está aberta para extensão, conseguimos adicionar novos validadores apenas criando as classes implementando a interface.
 -   **Dependency Inversion Principle**  (Princípio da inversão de dependência): porque nossa classe  _service_  depende de uma abstração, que é a interface, não depende dos validadores, das implementações especificamente. O módulo de alto nível, a  _service_, não depende dos módulos de baixo nível, que são os validadores.
+
+## Testes:
+- Controller
+- Repository, no projeto a Queries personalizadas para fazer consultas por isso é importante testar.
