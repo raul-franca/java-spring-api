@@ -1,17 +1,35 @@
-version: '3'
+version: "3.8"
 
 services:
-  mysql:
+  db:
     image: mysql:8.0
-    container_name: mysql-vollmed
-    restart: always
-    platform: linux/amd64
-    tty: false
-    volumes:
-        - ./mysql:/var/lib/mysql
+    restart: unless-stopped
+    container_name: vollmed_api_db
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
       MYSQL_DATABASE: vollmed_api
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./mysql:/var/lib/mysql
+  app:
+    image: openjdk:11-jdk
+    container_name: vollmed_api
+    depends_on:
+      - vollmed_api_db
+    build: .
+    restart: on-failure
     ports:
-      - 3306:3306
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/vollmed_api
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    volumes:
+      - ./app:/target/api-0.0.1-SNAPSHOT.jar
+    stdin_open: true
+    tty: true
+

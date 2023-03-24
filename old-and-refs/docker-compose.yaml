@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    image: openjdk:11-jdk
+    container_name: vollmed_api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/vollmed_api
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    command: ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "app.jar"]
+    volumes:
+      - ./app:/target/api-0.0.1-SNAPSHOT.jar
+      - ./wait-for-it.sh:/wait-for-it.sh
+    working_dir: /app
+  db:
+    image: mysql:8.0
+    container_name: vollmed_api_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vollmed_api
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./mysql:/var/lib/mysql
