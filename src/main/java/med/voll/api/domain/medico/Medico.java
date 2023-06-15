@@ -57,7 +57,7 @@ public class Medico {
 
     }
 
-    public void execluir(Long id) {
+    public void excluir(Long id) {
         this.ativo = false;
     }
 }
