@@ -3,6 +3,8 @@ package med.voll.api.controller;
 import med.voll.api.domain.endereco.DadosEndereco;
 import med.voll.api.domain.endereco.Endereco;
 import med.voll.api.domain.medico.*;
+import med.voll.api.domain.medico.dto.DadosCadastroMedico;
+import med.voll.api.domain.medico.dto.DadosDetalhamentoMedico;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

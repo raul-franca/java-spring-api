@@ -21,8 +21,9 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "medico_id")
+    //@ManyToOne = medico na classe Consulta possui um relacionamento muitos-para-um com a entidade Medico
+    @ManyToOne(fetch = FetchType.LAZY)// indica que o carregamento do médico será adiado até que seja explicitamente acessado, ou seja, não será carregado automaticamente junto com a consulta.
+    @JoinColumn(name = "medico_id")//estabelecer a ligação entre as consultas e os médicos
     private Medico medico;
 
     @ManyToOne(fetch = FetchType.LAZY)
