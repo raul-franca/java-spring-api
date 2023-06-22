@@ -18,6 +18,13 @@ public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
 
+    /**
+     * Gera um token JWT para o usuário fornecido.
+     *
+     * @param usuario O objeto do usuário para o qual o token será gerado.
+     * @return O token JWT gerado.
+     * @throws RuntimeException Exceção lançada em caso de erro na geração do token JWT.
+     */
     public String gerarToken(Usuario usuario) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
@@ -31,6 +38,13 @@ public class TokenService {
         }
     }
 
+    /**
+     * Obtém o subject (login do usuário) do token JWT fornecido.
+     *
+     * @param tokenJWT O token JWT a ser verificado.
+     * @return O subject (login do usuário) extraído do token JWT.
+     * @throws RuntimeException Exceção lançada em caso de erro na verificação do token JWT.
+     */
     public String getSubject(String tokenJWT) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
@@ -44,6 +58,12 @@ public class TokenService {
         }
     }
 
+    /**
+     * Obtém a data de expiração para o token JWT.
+     * Neste exemplo, a data de expiração é definida como 2 horas após o momento atual.
+     *
+     * @return A data de expiração em formato Instant.
+     */
     private Instant dataExpiracao() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }

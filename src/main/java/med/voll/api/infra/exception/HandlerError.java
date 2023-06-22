@@ -13,34 +13,29 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class HandlerError {
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity tratarErro404(){
+    public ResponseEntity tratarErro404() {
         return ResponseEntity.notFound().build();
     }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity tararErro400(MethodArgumentNotValidException exception){
+    public ResponseEntity tararErro400(MethodArgumentNotValidException exception) {
         var errors = exception.getFieldErrors();
         return ResponseEntity.badRequest().body(errors.stream().map(DadosErroValidacao::new).toList());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> tratarErro500(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " + ex.getLocalizedMessage());
     }
 
     @ExceptionHandler(ValidacaoException.class)
-    public ResponseEntity tararErroRegraDeNegocio(ValidacaoException exception){
+    public ResponseEntity tararErroRegraDeNegocio(ValidacaoException exception) {
         return ResponseEntity.badRequest().body(exception.getMessage());
     }
 
-    private record DadosErroValidacao(String campo, String mensagem){
-        public DadosErroValidacao(FieldError erro){
+    private record DadosErroValidacao(String campo, String mensagem) {
+        public DadosErroValidacao(FieldError erro) {
             this(erro.getField(), erro.getDefaultMessage());
         }
     }
-
-//    private record DadosErroValidacao(String campo, String mensagem) {
-//        public DadosErroValidacao(FieldError erro) {
-//            this(erro.getField(), erro.getDefaultMessage());
-//        }
-//    }
 }
