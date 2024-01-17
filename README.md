@@ -2,7 +2,7 @@
 
 
 # _API REST_  utilizando  [_Spring Boot_](https://spring.io/projects/spring-boot)
-O projeto é um App para uma clinica medica, sistema realiza CRUD de medicos, pacinetes e marcação de consultas, a autenticação dos usuarios com token JWT.
+O projeto é um API REST para uma clinica medica, sistema realiza CRUD de medicos, pacinetes e marcação de consultas, a autenticação dos usuarios com token JWT.
 
 [_Spring Initializr_](https://start.spring.io)_  para fazer a construção do projeto -   **Java**: 17.
 
